@@ -1,0 +1,28 @@
+TITLE: Exercise I_2_c from Thursday
+
+DATA:
+	! enter the name of the data set
+	FILE = ESS1-DE-D40-55.dat;
+	Format is 2F2 1F9 12F1;
+!	listwise = on;
+
+VARIABLE:
+	! enter the names of the variables in the data set
+	NAMES = essround cntry idno D40-D44 D49-D55;
+	Missing are D40-D44 D49-D55 (6-9);
+	usevariables are D40 D41 D42 D43 D44 D49 D50 D51 D52 D53 D54;
+	
+MODEL:
+	F1 BY D40@-1 D41 D42 D43 D44;
+	F2 BY D49@-1 D50 D51 D52 D53 D54;
+
+	M1 BY D40-D44@1 D49-D54@1;
+
+
+	F1 with F2;
+
+	F1 with M1@1.0;
+	F2 with M1@1.0;
+
+
+output: sampstat residual Stdyx Tech1 modindices;

@@ -1,0 +1,1117 @@
+Mplus VERSION 7 (Mac)
+MUTHEN & MUTHEN
+08/19/2015   3:40 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: Exercise II_0 from WednesDAY
+
+  Data: file = ESS1-MTMMsoc-poltrust-satisf-IT.dat;
+  Format is 2F2 1F9 10F2 6F1 3F2 6F1 3F2;
+  listwise=on;
+
+  Variable: Names are essround cntry idno ppltrst pplfair pplhlp
+  trstprl trstlgl trstplc stfeco stfgov stfdem spltadm test7 test8 test9
+  test10 test11 test12 test13 test14 test15 test25 test26 test27
+  test28 test29 test30 test31 test32 test33;
+
+  usevariables are stfeco stfgov stfdem test7 test8 test9 test25
+  test26 test27;
+
+  missing ARE essround cntry idno ppltrst pplfair pplhlp trstprl
+  trstlgl trstplc stfeco stfgov stfdem spltadm (66 - 99)
+  test7 test8 test9 test10 test11 test12 (6-9)
+  test13 test14 test15 (66 - 99)
+  test25 test26 test27 test28 test29 test30 (6-9)
+  test31 test32 test33 (66-99);
+
+  !analysis: type = basic;
+
+  model: 	
+
+  ! Adding ts
+
+  		T1 BY stfeco;
+  		T2 BY stfgov;
+  		T3 BY stfdem;
+
+  		T4 BY test7;
+  		T5 BY test8;
+  		T6 BY test9;
+
+  		T7 BY test25;
+  		T8 BY test26;
+  		T9 BY test27;
+
+  T1-T9@0;
+
+
+  	 	F1 BY T1 T4 T7;
+  		F2 BY T2 T5 T8;
+  		F3 BY T3 T6 T9;
+
+
+  ! We want to free the variance because by default it is 1
+
+  		M1 BY T1 T2 T3;
+  		M2 BY T4 T5 T6;
+  		M3 BY T7 T8 T9;
+
+
+  !var to free factors of 1
+  		F1@1.0;
+  		F2@1.0;
+  		F3@1.0;
+  ! free the variance of method factors
+
+  		M1*;
+  		M2*;
+  		M3*;
+  ! Fixing corr to zero.
+
+  		F1 WITH M1 @0;
+  		F1 WITH M2 @0;
+  		F1 WITH M3 @0;
+
+  		F2 WITH M1 @0;
+  		F2 WITH M2 @0;
+  		F2 WITH M3 @0;
+
+  		F3 WITH M1 @0;
+  		F3 WITH M2 @0;
+  		F3 WITH M3 @0;
+
+  output: sampstat residual Stdyx Tech1 modindices;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+Exercise II_0 from WednesDAY
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1020
+
+Number of dependent variables                                    9
+Number of independent variables                                  0
+Number of continuous latent variables                           15
+
+Observed dependent variables
+
+  Continuous
+   STFECO      STFGOV      STFDEM      TEST7       TEST8       TEST9
+   TEST25      TEST26      TEST27
+
+Continuous latent variables
+   T1          T2          T3          T4          T5          T6
+   T7          T8          T9          F1          F2          F3
+   M1          M2          M3
+
+
+Estimator                                                       ML
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+
+Input data file(s)
+  ESS1-MTMMsoc-poltrust-satisf-IT.dat
+
+Input data format
+  (2F2 1F9 10F2 6F1 3F2 6F1 3F2)
+
+
+SAMPLE STATISTICS
+
+
+     SAMPLE STATISTICS
+
+
+           Means
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+      1         4.097         3.885         4.867         2.202         2.138
+
+
+           Means
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+      1         2.435         2.375         2.284         2.725
+
+
+           Covariances
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+ STFECO         3.882
+ STFGOV         2.858         5.256
+ STFDEM         1.999         2.975         4.972
+ TEST7          0.631         0.790         0.511         0.579
+ TEST8          0.689         1.133         0.686         0.401         0.617
+ TEST9          0.337         0.549         0.853         0.254         0.305
+ TEST25         1.211         1.396         0.968         0.442         0.488
+ TEST26         1.192         1.855         1.216         0.442         0.637
+ TEST27         0.769         1.139         1.740         0.276         0.367
+
+
+           Covariances
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+ TEST9          0.556
+ TEST25         0.280         1.491
+ TEST26         0.335         1.206         1.605
+ TEST27         0.533         0.802         0.958         1.521
+
+
+           Correlations
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+ STFECO         1.000
+ STFGOV         0.633         1.000
+ STFDEM         0.455         0.582         1.000
+ TEST7          0.421         0.453         0.301         1.000
+ TEST8          0.445         0.629         0.392         0.670         1.000
+ TEST9          0.230         0.321         0.513         0.448         0.520
+ TEST25         0.503         0.499         0.355         0.476         0.509
+ TEST26         0.477         0.639         0.431         0.458         0.640
+ TEST27         0.316         0.403         0.633         0.294         0.379
+
+
+           Correlations
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+ TEST9          1.000
+ TEST25         0.307         1.000
+ TEST26         0.355         0.779         1.000
+ TEST27         0.579         0.533         0.613         1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       39
+
+Loglikelihood
+
+          H0 Value                      -12428.668
+          H1 Value                      -12419.338
+
+Information Criteria
+
+          Akaike (AIC)                   24935.337
+          Bayesian (BIC)                 25127.511
+          Sample-Size Adjusted BIC       25003.644
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                             18.661
+          Degrees of Freedom                    15
+          P-Value                           0.2295
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.015
+          90 Percent C.I.                    0.000  0.035
+          Probability RMSEA <= .05           0.999
+
+CFI/TLI
+
+          CFI                                0.999
+          TLI                                0.998
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           5594.093
+          Degrees of Freedom                    36
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.014
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ T1       BY
+    STFECO             1.000      0.000    999.000    999.000
+
+ T2       BY
+    STFGOV             1.000      0.000    999.000    999.000
+
+ T3       BY
+    STFDEM             1.000      0.000    999.000    999.000
+
+ T4       BY
+    TEST7              1.000      0.000    999.000    999.000
+
+ T5       BY
+    TEST8              1.000      0.000    999.000    999.000
+
+ T6       BY
+    TEST9              1.000      0.000    999.000    999.000
+
+ T7       BY
+    TEST25             1.000      0.000    999.000    999.000
+
+ T8       BY
+    TEST26             1.000      0.000    999.000    999.000
+
+ T9       BY
+    TEST27             1.000      0.000    999.000    999.000
+
+ F1       BY
+    T1                 1.000      0.000    999.000    999.000
+    T4                 0.263      0.042      6.194      0.000
+    T7                 0.464      0.063      7.387      0.000
+
+ F2       BY
+    T2                 1.000      0.000    999.000    999.000
+    T5                 0.384      0.041      9.294      0.000
+    T8                 0.487      0.053      9.203      0.000
+
+ F3       BY
+    T3                 1.000      0.000    999.000    999.000
+    T6                 0.363      0.023     15.486      0.000
+    T9                 0.786      0.047     16.776      0.000
+
+ M1       BY
+    T1                 1.000      0.000    999.000    999.000
+    T2                 1.464      0.074     19.747      0.000
+    T3                 1.240      0.072     17.200      0.000
+
+ M2       BY
+    T4                 1.000      0.000    999.000    999.000
+    T5                 1.178      0.067     17.540      0.000
+    T6                 0.852      0.055     15.551      0.000
+
+ M3       BY
+    T7                 1.000      0.000    999.000    999.000
+    T8                 1.156      0.051     22.560      0.000
+    T9                 0.851      0.041     20.914      0.000
+
+ F1       WITH
+    M1                 0.000      0.000    999.000    999.000
+    M2                 0.000      0.000    999.000    999.000
+    M3                 0.000      0.000    999.000    999.000
+
+ F2       WITH
+    M1                 0.000      0.000    999.000    999.000
+    M2                 0.000      0.000    999.000    999.000
+    M3                 0.000      0.000    999.000    999.000
+    F1                 0.582      0.063      9.215      0.000
+
+ F3       WITH
+    M1                 0.000      0.000    999.000    999.000
+    M2                 0.000      0.000    999.000    999.000
+    M3                 0.000      0.000    999.000    999.000
+    F1                 0.026      0.084      0.315      0.753
+    F2                 0.088      0.077      1.142      0.253
+
+ M2       WITH
+    M1                 0.427      0.047      9.136      0.000
+
+ M3       WITH
+    M1                 0.804      0.081      9.871      0.000
+    M2                 0.329      0.034      9.592      0.000
+
+ Intercepts
+    STFECO             4.097      0.062     65.712      0.000
+    STFGOV             3.885      0.072     54.257      0.000
+    STFDEM             4.867      0.069     70.895      0.000
+    TEST7              2.202      0.024     91.946      0.000
+    TEST8              2.138      0.025     86.761      0.000
+    TEST9              2.435      0.023    104.914      0.000
+    TEST25             2.375      0.038     61.948      0.000
+    TEST26             2.284      0.040     57.645      0.000
+    TEST27             2.725      0.038     71.002      0.000
+
+ Variances
+    F1                 1.000      0.000    999.000    999.000
+    F2                 1.000      0.000    999.000    999.000
+    F3                 1.000      0.000    999.000    999.000
+    M1                 1.564      0.166      9.441      0.000
+    M2                 0.294      0.030      9.815      0.000
+    M3                 0.933      0.078     11.892      0.000
+
+ Residual Variances
+    STFECO             1.401      0.113     12.378      0.000
+    STFGOV             0.878      0.103      8.536      0.000
+    STFDEM             1.400      0.118     11.863      0.000
+    TEST7              0.222      0.015     15.122      0.000
+    TEST8              0.064      0.013      4.865      0.000
+    TEST9              0.205      0.014     14.687      0.000
+    TEST25             0.352      0.030     11.801      0.000
+    TEST26             0.119      0.026      4.625      0.000
+    TEST27             0.208      0.045      4.631      0.000
+    T1                 0.000      0.000    999.000    999.000
+    T2                 0.000      0.000    999.000    999.000
+    T3                 0.000      0.000    999.000    999.000
+    T4                 0.000      0.000    999.000    999.000
+    T5                 0.000      0.000    999.000    999.000
+    T6                 0.000      0.000    999.000    999.000
+    T7                 0.000      0.000    999.000    999.000
+    T8                 0.000      0.000    999.000    999.000
+    T9                 0.000      0.000    999.000    999.000
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ T1       BY
+    STFECO             0.804      0.017     48.643      0.000
+
+ T2       BY
+    STFGOV             0.912      0.011     80.127      0.000
+
+ T3       BY
+    STFDEM             0.842      0.015     55.449      0.000
+
+ T4       BY
+    TEST7              0.788      0.017     46.657      0.000
+
+ T5       BY
+    TEST8              0.947      0.012     81.087      0.000
+
+ T6       BY
+    TEST9              0.792      0.016     48.000      0.000
+
+ T7       BY
+    TEST25             0.875      0.012     70.939      0.000
+
+ T8       BY
+    TEST26             0.962      0.009    113.191      0.000
+
+ T9       BY
+    TEST27             0.928      0.017     56.251      0.000
+
+ F1       BY
+    T1                 0.625      0.020     30.954      0.000
+    T4                 0.436      0.068      6.403      0.000
+    T7                 0.433      0.057      7.647      0.000
+
+ F2       BY
+    T2                 0.479      0.014     35.126      0.000
+    T5                 0.515      0.053      9.791      0.000
+    T8                 0.400      0.044      9.150      0.000
+
+ F3       BY
+    T3                 0.542      0.017     32.095      0.000
+    T6                 0.618      0.035     17.646      0.000
+    T9                 0.691      0.032     21.834      0.000
+
+ M1       BY
+    T1                 0.781      0.016     48.415      0.000
+    T2                 0.878      0.007    117.760      0.000
+    T3                 0.841      0.011     77.243      0.000
+
+ M2       BY
+    T4                 0.900      0.033     27.288      0.000
+    T5                 0.857      0.032     27.110      0.000
+    T6                 0.786      0.027     28.602      0.000
+
+ M3       BY
+    T7                 0.902      0.027     33.204      0.000
+    T8                 0.916      0.019     48.021      0.000
+    T9                 0.723      0.030     23.881      0.000
+
+ F1       WITH
+    M1                 0.000      0.000    999.000    999.000
+    M2                 0.000      0.000    999.000    999.000
+    M3                 0.000      0.000    999.000    999.000
+
+ F2       WITH
+    M1                 0.000      0.000    999.000    999.000
+    M2                 0.000      0.000    999.000    999.000
+    M3                 0.000      0.000    999.000    999.000
+    F1                 0.582      0.063      9.215      0.000
+
+ F3       WITH
+    M1                 0.000      0.000    999.000    999.000
+    M2                 0.000      0.000    999.000    999.000
+    M3                 0.000      0.000    999.000    999.000
+    F1                 0.026      0.084      0.315      0.753
+    F2                 0.088      0.077      1.142      0.253
+
+ M2       WITH
+    M1                 0.630      0.028     22.550      0.000
+
+ M3       WITH
+    M1                 0.666      0.024     27.324      0.000
+    M2                 0.629      0.028     22.605      0.000
+
+ Intercepts
+    STFECO             2.058      0.055     37.543      0.000
+    STFGOV             1.699      0.049     34.969      0.000
+    STFDEM             2.220      0.055     40.396      0.000
+    TEST7              2.879      0.071     40.511      0.000
+    TEST8              2.717      0.067     40.265      0.000
+    TEST9              3.285      0.077     42.542      0.000
+    TEST25             1.940      0.053     36.650      0.000
+    TEST26             1.805      0.051     35.735      0.000
+    TEST27             2.223      0.057     39.159      0.000
+
+ Variances
+    F1                 1.000      0.000    999.000    999.000
+    F2                 1.000      0.000    999.000    999.000
+    F3                 1.000      0.000    999.000    999.000
+    M1                 1.000      0.000    999.000    999.000
+    M2                 1.000      0.000    999.000    999.000
+    M3                 1.000      0.000    999.000    999.000
+
+ Residual Variances
+    STFECO             0.353      0.027     13.289      0.000
+    STFGOV             0.168      0.021      8.080      0.000
+    STFDEM             0.291      0.026     11.392      0.000
+    TEST7              0.380      0.027     14.269      0.000
+    TEST8              0.104      0.022      4.711      0.000
+    TEST9              0.373      0.026     14.261      0.000
+    TEST25             0.235      0.022     10.879      0.000
+    TEST26             0.074      0.016      4.528      0.000
+    TEST27             0.138      0.031      4.521      0.000
+    T1                 0.000    999.000    999.000    999.000
+    T2                 0.000    999.000    999.000    999.000
+    T3                 0.000    999.000    999.000    999.000
+    T4                 0.000    999.000    999.000    999.000
+    T5                 0.000    999.000    999.000    999.000
+    T6                 0.000    999.000    999.000    999.000
+    T7                 0.000    999.000    999.000    999.000
+    T8                 0.000    999.000    999.000    999.000
+    T9                 0.000    999.000    999.000    999.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    STFECO             0.647      0.027     24.321      0.000
+    STFGOV             0.832      0.021     40.064      0.000
+    STFDEM             0.709      0.026     27.724      0.000
+    TEST7              0.620      0.027     23.328      0.000
+    TEST8              0.896      0.022     40.543      0.000
+    TEST9              0.627      0.026     24.000      0.000
+    TEST25             0.765      0.022     35.469      0.000
+    TEST26             0.926      0.016     56.596      0.000
+    TEST27             0.862      0.031     28.125      0.000
+
+     Latent                                         Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    T1                 1.000    999.000    999.000    999.000
+    T2                 1.000    999.000    999.000    999.000
+    T3                 1.000    999.000    999.000    999.000
+    T4                 1.000    999.000    999.000    999.000
+    T5                 1.000    999.000    999.000    999.000
+    T6                 1.000    999.000    999.000    999.000
+    T7                 1.000    999.000    999.000    999.000
+    T8                 1.000    999.000    999.000    999.000
+    T9                 1.000    999.000    999.000    999.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.989E-03
+       (ratio of smallest to largest eigenvalue)
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means/Intercepts/Thresholds
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+      1         4.097         3.885         4.867         2.202         2.138
+
+
+           Model Estimated Means/Intercepts/Thresholds
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+      1         2.435         2.375         2.284         2.725
+
+
+           Residuals for Means/Intercepts/Thresholds
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means/Intercepts/Thresholds
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means/Intercepts/Thresholds
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means/Intercepts/Thresholds
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means/Intercepts/Thresholds
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means/Intercepts/Thresholds
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000
+
+
+           Model Estimated Covariances/Correlations/Residual Correlations
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+ STFECO         3.965
+ STFGOV         2.872         5.230
+ STFDEM         1.967         2.928         4.806
+ TEST7          0.690         0.778         0.537         0.585
+ TEST8          0.726         1.120         0.657         0.405         0.620
+ TEST9          0.373         0.564         0.814         0.253         0.307
+ TEST25         1.267         1.447         1.010         0.451         0.492
+ TEST26         1.213         1.847         1.195         0.455         0.635
+ TEST27         0.705         1.071         1.635         0.286         0.357
+
+
+           Model Estimated Covariances/Correlations/Residual Correlations
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+ TEST9          0.550
+ TEST25         0.285         1.500
+ TEST26         0.340         1.210         1.602
+ TEST27         0.524         0.804         0.951         1.502
+
+
+           Residuals for Covariances/Correlations/Residual Correlations
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+ STFECO        -0.083
+ STFGOV        -0.014         0.026
+ STFDEM         0.033         0.047         0.166
+ TEST7         -0.058         0.012        -0.025        -0.006
+ TEST8         -0.038         0.013         0.029        -0.004        -0.002
+ TEST9         -0.036        -0.015         0.039         0.001        -0.003
+ TEST25        -0.057        -0.051        -0.042        -0.009        -0.003
+ TEST26        -0.021         0.008         0.021        -0.014         0.002
+ TEST27         0.064         0.068         0.105        -0.010         0.011
+
+
+           Residuals for Covariances/Correlations/Residual Correlations
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+ TEST9          0.006
+ TEST25        -0.005        -0.009
+ TEST26        -0.005        -0.004         0.004
+ TEST27         0.009        -0.001         0.007         0.019
+
+
+           Standardized Residuals (z-scores) for Covariances/Correlations/Residual Corr
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+ STFECO       999.000
+ STFGOV        -1.070         0.603
+ STFDEM         0.790         0.905         1.640
+ TEST7         -3.232         0.531        -0.893       999.000
+ TEST8         -1.825         0.781         1.346        -3.344        -1.205
+ TEST9         -1.343        -0.530         1.172         0.298        -0.656
+ TEST25        -1.988        -1.847        -1.061        -1.036        -0.383
+ TEST26        -0.625         0.321         0.636        -1.158         0.343
+ TEST27         1.785         1.625         1.842        -0.578         0.856
+
+
+           Standardized Residuals (z-scores) for Covariances/Correlations/Residual Corr
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+ TEST9          0.875
+ TEST25        -0.333        -3.222
+ TEST26        -0.316        -0.456         0.361
+ TEST27         0.630        -0.126         0.563         0.916
+
+
+           Normalized Residuals for Covariances/Correlations/Residual Correlations
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+ STFECO        -0.485
+ STFGOV        -0.084         0.112
+ STFDEM         0.216         0.252         0.754
+ TEST7         -1.143         0.196        -0.456        -0.241
+ TEST8         -0.712         0.189         0.487        -0.196        -0.087
+ TEST9         -0.763        -0.270         0.674         0.070        -0.122
+ TEST25        -0.674        -0.520        -0.462        -0.290        -0.096
+ TEST26        -0.239         0.073         0.221        -0.408         0.052
+ TEST27         0.800         0.715         1.028        -0.314         0.334
+
+
+           Normalized Residuals for Covariances/Correlations/Residual Correlations
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+ TEST9          0.245
+ TEST25        -0.177        -0.129
+ TEST26        -0.146        -0.058         0.052
+ TEST27         0.264        -0.024         0.114         0.286
+
+
+MODEL MODIFICATION INDICES
+
+NOTE:  Modification indices for direct effects of observed dependent variables
+regressed on covariates may not be included.  To include these, request
+MODINDICES (ALL).
+
+Minimum M.I. value for printing the modification index    10.000
+
+                            M.I.     E.P.C.  Std E.P.C.  StdYX E.P.C.
+
+No modification indices above the minimum value.
+
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+      1           1             2             3             4             5
+
+
+           NU
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+      1           6             7             8             9
+
+
+           LAMBDA
+              T1            T2            T3            T4            T5
+              ________      ________      ________      ________      ________
+ STFECO             0             0             0             0             0
+ STFGOV             0             0             0             0             0
+ STFDEM             0             0             0             0             0
+ TEST7              0             0             0             0             0
+ TEST8              0             0             0             0             0
+ TEST9              0             0             0             0             0
+ TEST25             0             0             0             0             0
+ TEST26             0             0             0             0             0
+ TEST27             0             0             0             0             0
+
+
+           LAMBDA
+              T6            T7            T8            T9            F1
+              ________      ________      ________      ________      ________
+ STFECO             0             0             0             0             0
+ STFGOV             0             0             0             0             0
+ STFDEM             0             0             0             0             0
+ TEST7              0             0             0             0             0
+ TEST8              0             0             0             0             0
+ TEST9              0             0             0             0             0
+ TEST25             0             0             0             0             0
+ TEST26             0             0             0             0             0
+ TEST27             0             0             0             0             0
+
+
+           LAMBDA
+              F2            F3            M1            M2            M3
+              ________      ________      ________      ________      ________
+ STFECO             0             0             0             0             0
+ STFGOV             0             0             0             0             0
+ STFDEM             0             0             0             0             0
+ TEST7              0             0             0             0             0
+ TEST8              0             0             0             0             0
+ TEST9              0             0             0             0             0
+ TEST25             0             0             0             0             0
+ TEST26             0             0             0             0             0
+ TEST27             0             0             0             0             0
+
+
+           THETA
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+ STFECO            10
+ STFGOV             0            11
+ STFDEM             0             0            12
+ TEST7              0             0             0            13
+ TEST8              0             0             0             0            14
+ TEST9              0             0             0             0             0
+ TEST25             0             0             0             0             0
+ TEST26             0             0             0             0             0
+ TEST27             0             0             0             0             0
+
+
+           THETA
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+ TEST9             15
+ TEST25             0            16
+ TEST26             0             0            17
+ TEST27             0             0             0            18
+
+
+           ALPHA
+              T1            T2            T3            T4            T5
+              ________      ________      ________      ________      ________
+      1           0             0             0             0             0
+
+
+           ALPHA
+              T6            T7            T8            T9            F1
+              ________      ________      ________      ________      ________
+      1           0             0             0             0             0
+
+
+           ALPHA
+              F2            F3            M1            M2            M3
+              ________      ________      ________      ________      ________
+      1           0             0             0             0             0
+
+
+           BETA
+              T1            T2            T3            T4            T5
+              ________      ________      ________      ________      ________
+ T1                 0             0             0             0             0
+ T2                 0             0             0             0             0
+ T3                 0             0             0             0             0
+ T4                 0             0             0             0             0
+ T5                 0             0             0             0             0
+ T6                 0             0             0             0             0
+ T7                 0             0             0             0             0
+ T8                 0             0             0             0             0
+ T9                 0             0             0             0             0
+ F1                 0             0             0             0             0
+ F2                 0             0             0             0             0
+ F3                 0             0             0             0             0
+ M1                 0             0             0             0             0
+ M2                 0             0             0             0             0
+ M3                 0             0             0             0             0
+
+
+           BETA
+              T6            T7            T8            T9            F1
+              ________      ________      ________      ________      ________
+ T1                 0             0             0             0             0
+ T2                 0             0             0             0             0
+ T3                 0             0             0             0             0
+ T4                 0             0             0             0            21
+ T5                 0             0             0             0             0
+ T6                 0             0             0             0             0
+ T7                 0             0             0             0            26
+ T8                 0             0             0             0             0
+ T9                 0             0             0             0             0
+ F1                 0             0             0             0             0
+ F2                 0             0             0             0             0
+ F3                 0             0             0             0             0
+ M1                 0             0             0             0             0
+ M2                 0             0             0             0             0
+ M3                 0             0             0             0             0
+
+
+           BETA
+              F2            F3            M1            M2            M3
+              ________      ________      ________      ________      ________
+ T1                 0             0             0             0             0
+ T2                 0             0            19             0             0
+ T3                 0             0            20             0             0
+ T4                 0             0             0             0             0
+ T5                22             0             0            23             0
+ T6                 0            24             0            25             0
+ T7                 0             0             0             0             0
+ T8                27             0             0             0            28
+ T9                 0            29             0             0            30
+ F1                 0             0             0             0             0
+ F2                 0             0             0             0             0
+ F3                 0             0             0             0             0
+ M1                 0             0             0             0             0
+ M2                 0             0             0             0             0
+ M3                 0             0             0             0             0
+
+
+           PSI
+              T1            T2            T3            T4            T5
+              ________      ________      ________      ________      ________
+ T1                 0
+ T2                 0             0
+ T3                 0             0             0
+ T4                 0             0             0             0
+ T5                 0             0             0             0             0
+ T6                 0             0             0             0             0
+ T7                 0             0             0             0             0
+ T8                 0             0             0             0             0
+ T9                 0             0             0             0             0
+ F1                 0             0             0             0             0
+ F2                 0             0             0             0             0
+ F3                 0             0             0             0             0
+ M1                 0             0             0             0             0
+ M2                 0             0             0             0             0
+ M3                 0             0             0             0             0
+
+
+           PSI
+              T6            T7            T8            T9            F1
+              ________      ________      ________      ________      ________
+ T6                 0
+ T7                 0             0
+ T8                 0             0             0
+ T9                 0             0             0             0
+ F1                 0             0             0             0             0
+ F2                 0             0             0             0            31
+ F3                 0             0             0             0            32
+ M1                 0             0             0             0             0
+ M2                 0             0             0             0             0
+ M3                 0             0             0             0             0
+
+
+           PSI
+              F2            F3            M1            M2            M3
+              ________      ________      ________      ________      ________
+ F2                 0
+ F3                33             0
+ M1                 0             0            34
+ M2                 0             0            35            36
+ M3                 0             0            37            38            39
+
+
+     STARTING VALUES
+
+
+           NU
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+      1         4.097         3.885         4.867         2.202         2.138
+
+
+           NU
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+      1         2.435         2.375         2.284         2.725
+
+
+           LAMBDA
+              T1            T2            T3            T4            T5
+              ________      ________      ________      ________      ________
+ STFECO         1.000         0.000         0.000         0.000         0.000
+ STFGOV         0.000         1.000         0.000         0.000         0.000
+ STFDEM         0.000         0.000         1.000         0.000         0.000
+ TEST7          0.000         0.000         0.000         1.000         0.000
+ TEST8          0.000         0.000         0.000         0.000         1.000
+ TEST9          0.000         0.000         0.000         0.000         0.000
+ TEST25         0.000         0.000         0.000         0.000         0.000
+ TEST26         0.000         0.000         0.000         0.000         0.000
+ TEST27         0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              T6            T7            T8            T9            F1
+              ________      ________      ________      ________      ________
+ STFECO         0.000         0.000         0.000         0.000         0.000
+ STFGOV         0.000         0.000         0.000         0.000         0.000
+ STFDEM         0.000         0.000         0.000         0.000         0.000
+ TEST7          0.000         0.000         0.000         0.000         0.000
+ TEST8          0.000         0.000         0.000         0.000         0.000
+ TEST9          1.000         0.000         0.000         0.000         0.000
+ TEST25         0.000         1.000         0.000         0.000         0.000
+ TEST26         0.000         0.000         1.000         0.000         0.000
+ TEST27         0.000         0.000         0.000         1.000         0.000
+
+
+           LAMBDA
+              F2            F3            M1            M2            M3
+              ________      ________      ________      ________      ________
+ STFECO         0.000         0.000         0.000         0.000         0.000
+ STFGOV         0.000         0.000         0.000         0.000         0.000
+ STFDEM         0.000         0.000         0.000         0.000         0.000
+ TEST7          0.000         0.000         0.000         0.000         0.000
+ TEST8          0.000         0.000         0.000         0.000         0.000
+ TEST9          0.000         0.000         0.000         0.000         0.000
+ TEST25         0.000         0.000         0.000         0.000         0.000
+ TEST26         0.000         0.000         0.000         0.000         0.000
+ TEST27         0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+ STFECO         1.943
+ STFGOV         0.000         2.631
+ STFDEM         0.000         0.000         2.489
+ TEST7          0.000         0.000         0.000         0.290
+ TEST8          0.000         0.000         0.000         0.000         0.309
+ TEST9          0.000         0.000         0.000         0.000         0.000
+ TEST25         0.000         0.000         0.000         0.000         0.000
+ TEST26         0.000         0.000         0.000         0.000         0.000
+ TEST27         0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+ TEST9          0.278
+ TEST25         0.000         0.746
+ TEST26         0.000         0.000         0.804
+ TEST27         0.000         0.000         0.000         0.761
+
+
+           ALPHA
+              T1            T2            T3            T4            T5
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           ALPHA
+              T6            T7            T8            T9            F1
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           ALPHA
+              F2            F3            M1            M2            M3
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              T1            T2            T3            T4            T5
+              ________      ________      ________      ________      ________
+ T1             0.000         0.000         0.000         0.000         0.000
+ T2             0.000         0.000         0.000         0.000         0.000
+ T3             0.000         0.000         0.000         0.000         0.000
+ T4             0.000         0.000         0.000         0.000         0.000
+ T5             0.000         0.000         0.000         0.000         0.000
+ T6             0.000         0.000         0.000         0.000         0.000
+ T7             0.000         0.000         0.000         0.000         0.000
+ T8             0.000         0.000         0.000         0.000         0.000
+ T9             0.000         0.000         0.000         0.000         0.000
+ F1             0.000         0.000         0.000         0.000         0.000
+ F2             0.000         0.000         0.000         0.000         0.000
+ F3             0.000         0.000         0.000         0.000         0.000
+ M1             0.000         0.000         0.000         0.000         0.000
+ M2             0.000         0.000         0.000         0.000         0.000
+ M3             0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              T6            T7            T8            T9            F1
+              ________      ________      ________      ________      ________
+ T1             0.000         0.000         0.000         0.000         1.000
+ T2             0.000         0.000         0.000         0.000         0.000
+ T3             0.000         0.000         0.000         0.000         0.000
+ T4             0.000         0.000         0.000         0.000         1.000
+ T5             0.000         0.000         0.000         0.000         0.000
+ T6             0.000         0.000         0.000         0.000         0.000
+ T7             0.000         0.000         0.000         0.000         1.000
+ T8             0.000         0.000         0.000         0.000         0.000
+ T9             0.000         0.000         0.000         0.000         0.000
+ F1             0.000         0.000         0.000         0.000         0.000
+ F2             0.000         0.000         0.000         0.000         0.000
+ F3             0.000         0.000         0.000         0.000         0.000
+ M1             0.000         0.000         0.000         0.000         0.000
+ M2             0.000         0.000         0.000         0.000         0.000
+ M3             0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              F2            F3            M1            M2            M3
+              ________      ________      ________      ________      ________
+ T1             0.000         0.000         1.000         0.000         0.000
+ T2             1.000         0.000         1.000         0.000         0.000
+ T3             0.000         1.000         1.000         0.000         0.000
+ T4             0.000         0.000         0.000         1.000         0.000
+ T5             1.000         0.000         0.000         1.000         0.000
+ T6             0.000         1.000         0.000         1.000         0.000
+ T7             0.000         0.000         0.000         0.000         1.000
+ T8             1.000         0.000         0.000         0.000         1.000
+ T9             0.000         1.000         0.000         0.000         1.000
+ F1             0.000         0.000         0.000         0.000         0.000
+ F2             0.000         0.000         0.000         0.000         0.000
+ F3             0.000         0.000         0.000         0.000         0.000
+ M1             0.000         0.000         0.000         0.000         0.000
+ M2             0.000         0.000         0.000         0.000         0.000
+ M3             0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              T1            T2            T3            T4            T5
+              ________      ________      ________      ________      ________
+ T1             0.000
+ T2             0.000         0.000
+ T3             0.000         0.000         0.000
+ T4             0.000         0.000         0.000         0.000
+ T5             0.000         0.000         0.000         0.000         0.000
+ T6             0.000         0.000         0.000         0.000         0.000
+ T7             0.000         0.000         0.000         0.000         0.000
+ T8             0.000         0.000         0.000         0.000         0.000
+ T9             0.000         0.000         0.000         0.000         0.000
+ F1             0.000         0.000         0.000         0.000         0.000
+ F2             0.000         0.000         0.000         0.000         0.000
+ F3             0.000         0.000         0.000         0.000         0.000
+ M1             0.000         0.000         0.000         0.000         0.000
+ M2             0.000         0.000         0.000         0.000         0.000
+ M3             0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              T6            T7            T8            T9            F1
+              ________      ________      ________      ________      ________
+ T6             0.000
+ T7             0.000         0.000
+ T8             0.000         0.000         0.000
+ T9             0.000         0.000         0.000         0.000
+ F1             0.000         0.000         0.000         0.000         1.000
+ F2             0.000         0.000         0.000         0.000         0.000
+ F3             0.000         0.000         0.000         0.000         0.000
+ M1             0.000         0.000         0.000         0.000         0.000
+ M2             0.000         0.000         0.000         0.000         0.000
+ M3             0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              F2            F3            M1            M2            M3
+              ________      ________      ________      ________      ________
+ F2             1.000
+ F3             0.000         1.000
+ M1             0.000         0.000         0.050
+ M2             0.000         0.000         0.000         0.050
+ M3             0.000         0.000         0.000         0.000         0.050
+
+
+     Beginning Time:  15:40:59
+        Ending Time:  15:40:59
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2012 Muthen & Muthen

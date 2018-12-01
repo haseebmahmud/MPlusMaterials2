@@ -1,0 +1,275 @@
+Mplus VERSION 7 (Mac)
+MUTHEN & MUTHEN
+08/18/2015   3:12 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: Exercise III from TUESDAY
+
+  Data: FILE is ESSround3-trust-day2-n.dat;
+  Format is 12f2;
+  listwise=on;
+
+  Variable: Names are cntry A8 A9 A10 B4 B5 B6 B7 B8 B9 B10 cntrynum;
+  usevariables are B4;
+
+  missing ARE ALL (66 77 88 99);
+
+  !analysis: type = basic;
+
+
+
+
+  model: TRUST by B4;
+
+  output: sampstat residual Stdyx Tech1 modindices;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+Exercise III from TUESDAY
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                       43992
+
+Number of dependent variables                                    1
+Number of independent variables                                  0
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Continuous
+   B4
+
+Continuous latent variables
+   TRUST
+
+
+Estimator                                                       ML
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+
+Input data file(s)
+  ESSround3-trust-day2-n.dat
+
+Input data format
+  (12F2)
+
+
+SAMPLE STATISTICS
+
+
+     SAMPLE STATISTICS
+
+
+           Means
+              B4
+              ________
+      1         4.385
+
+
+           Covariances
+              B4
+              ________
+ B4             6.622
+
+
+           Correlations
+              B4
+              ________
+ B4             1.000
+
+
+     THE DEGREES OF FREEDOM FOR THIS MODEL ARE NEGATIVE.  THE MODEL IS NOT
+     IDENTIFIED.  NO CHI-SQUARE TEST IS AVAILABLE.  CHECK YOUR MODEL.
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES COULD NOT BE
+     COMPUTED.  THE MODEL MAY NOT BE IDENTIFIED.  CHECK YOUR MODEL.
+     PROBLEM INVOLVING PARAMETER 3.
+
+     THE CONDITION NUMBER IS       0.454D-16.
+
+
+
+MODEL RESULTS
+
+                    Estimate
+
+ TRUST    BY
+    B4                 1.000
+
+ Intercepts
+    B4                 4.385
+
+ Variances
+    TRUST              1.491
+
+ Residual Variances
+    B4                 5.131
+
+
+STANDARDIZED MODEL RESULTS
+
+                      StdYX
+                    Estimate
+
+ TRUST    BY
+    B4                 0.475
+
+ Intercepts
+    B4                 1.704
+
+ Variances
+    TRUST              1.000
+
+ Residual Variances
+    B4                 0.775
+
+
+MODEL COMMAND WITH FINAL ESTIMATES USED AS STARTING VALUES
+
+     trust BY b4@1;
+
+     [ b4*4.38482 ];
+
+     b4*5.13055;
+     trust*1.49091;
+
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means/Intercepts/Thresholds
+              B4
+              ________
+      1         4.385
+
+
+           Residuals for Means/Intercepts/Thresholds
+              B4
+              ________
+      1         0.000
+
+
+           Model Estimated Covariances/Correlations/Residual Correlations
+              B4
+              ________
+ B4            11.752
+
+
+           Residuals for Covariances/Correlations/Residual Correlations
+              B4
+              ________
+ B4            -5.130
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              B4
+              ________
+      1           1
+
+
+           LAMBDA
+              TRUST
+              ________
+ B4                 0
+
+
+           THETA
+              B4
+              ________
+ B4                 2
+
+
+           ALPHA
+              TRUST
+              ________
+      1           0
+
+
+           BETA
+              TRUST
+              ________
+ TRUST              0
+
+
+           PSI
+              TRUST
+              ________
+ TRUST              3
+
+
+     STARTING VALUES
+
+
+           NU
+              B4
+              ________
+      1         4.385
+
+
+           LAMBDA
+              TRUST
+              ________
+ B4             1.000
+
+
+           THETA
+              B4
+              ________
+ B4             3.311
+
+
+           ALPHA
+              TRUST
+              ________
+      1         0.000
+
+
+           BETA
+              TRUST
+              ________
+ TRUST          0.000
+
+
+           PSI
+              TRUST
+              ________
+ TRUST          0.050
+
+
+     Beginning Time:  15:12:30
+        Ending Time:  15:12:31
+       Elapsed Time:  00:00:01
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2012 Muthen & Muthen

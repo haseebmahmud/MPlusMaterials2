@@ -1,0 +1,411 @@
+Mplus VERSION 7 (Mac)
+MUTHEN & MUTHEN
+08/18/2015   3:17 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: Exercise III from TUESDAY
+
+  Data: FILE is ESSround3-trust-day2-n.dat;
+  Format is 12f2;
+  listwise=on;
+
+  Variable: Names are cntry A8 A9 A10 B4 B5 B6 B7 B8 B9 B10 cntrynum;
+  usevariables are B4 B5 B6 B7;
+
+  missing ARE ALL (66 77 88 99);
+
+  !analysis: type = basic;
+
+
+  model: TRUST by B4 B5 B6 B7;
+
+  output: sampstat residual Stdyx Tech1 modindices;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+Exercise III from TUESDAY
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                       42617
+
+Number of dependent variables                                    4
+Number of independent variables                                  0
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Continuous
+   B4          B5          B6          B7
+
+Continuous latent variables
+   TRUST
+
+
+Estimator                                                       ML
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+
+Input data file(s)
+  ESSround3-trust-day2-n.dat
+
+Input data format
+  (12F2)
+
+
+SAMPLE STATISTICS
+
+
+     SAMPLE STATISTICS
+
+
+           Means
+              B4            B5            B6            B7
+              ________      ________      ________      ________
+      1         4.400         4.957         5.621         3.534
+
+
+           Covariances
+              B4            B5            B6            B7
+              ________      ________      ________      ________
+ B4             6.576
+ B5             4.472         7.154
+ B6             3.758         5.015         7.293
+ B7             4.435         3.719         3.328         5.640
+
+
+           Correlations
+              B4            B5            B6            B7
+              ________      ________      ________      ________
+ B4             1.000
+ B5             0.652         1.000
+ B6             0.543         0.694         1.000
+ B7             0.728         0.586         0.519         1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       12
+
+Loglikelihood
+
+          H0 Value                     -362881.939
+          H1 Value                     -359320.802
+
+Information Criteria
+
+          Akaike (AIC)                  725787.878
+          Bayesian (BIC)                725891.798
+          Sample-Size Adjusted BIC      725853.662
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                           7122.273
+          Degrees of Freedom                     2
+          P-Value                           0.0000
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.289
+          90 Percent C.I.                    0.283  0.295
+          Probability RMSEA <= .05           0.000
+
+CFI/TLI
+
+          CFI                                0.919
+          TLI                                0.756
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                          87646.808
+          Degrees of Freedom                     6
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.044
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ TRUST    BY
+    B4                 1.000      0.000    999.000    999.000
+    B5                 1.004      0.006    159.495      0.000
+    B6                 0.903      0.007    138.549      0.000
+    B7                 0.873      0.005    185.522      0.000
+
+ Intercepts
+    B4                 4.400      0.012    354.254      0.000
+    B5                 4.957      0.013    382.627      0.000
+    B6                 5.621      0.013    429.689      0.000
+    B7                 3.534      0.012    307.174      0.000
+
+ Variances
+    TRUST              4.614      0.047     97.642      0.000
+
+ Residual Variances
+    B4                 1.962      0.024     82.568      0.000
+    B5                 2.506      0.028     90.161      0.000
+    B6                 3.532      0.032    110.993      0.000
+    B7                 2.125      0.021    100.008      0.000
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ TRUST    BY
+    B4                 0.838      0.002    365.441      0.000
+    B5                 0.806      0.003    316.903      0.000
+    B6                 0.718      0.003    234.265      0.000
+    B7                 0.789      0.003    313.171      0.000
+
+ Intercepts
+    B4                 1.716      0.008    225.299      0.000
+    B5                 1.853      0.008    232.102      0.000
+    B6                 2.081      0.009    241.486      0.000
+    B7                 1.488      0.007    211.616      0.000
+
+ Variances
+    TRUST              1.000      0.000    999.000    999.000
+
+ Residual Variances
+    B4                 0.298      0.004     77.707      0.000
+    B5                 0.350      0.004     85.414      0.000
+    B6                 0.484      0.004    109.994      0.000
+    B7                 0.377      0.004     94.685      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    B4                 0.702      0.004    182.720      0.000
+    B5                 0.650      0.004    158.451      0.000
+    B6                 0.516      0.004    117.132      0.000
+    B7                 0.623      0.004    156.586      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.911E-02
+       (ratio of smallest to largest eigenvalue)
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means/Intercepts/Thresholds
+              B4            B5            B6            B7
+              ________      ________      ________      ________
+      1         4.400         4.957         5.621         3.534
+
+
+           Residuals for Means/Intercepts/Thresholds
+              B4            B5            B6            B7
+              ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means/Intercepts/Thresholds
+              B4            B5            B6            B7
+              ________      ________      ________      ________
+      1         0.000       999.000         0.000         2.272
+
+
+           Normalized Residuals for Means/Intercepts/Thresholds
+              B4            B5            B6            B7
+              ________      ________      ________      ________
+      1         0.000        -0.001         0.000         0.002
+
+
+           Model Estimated Covariances/Correlations/Residual Correlations
+              B4            B5            B6            B7
+              ________      ________      ________      ________
+ B4             6.576
+ B5             4.631         7.154
+ B6             4.166         4.181         7.293
+ B7             4.027         4.042         3.636         5.640
+
+
+           Residuals for Covariances/Correlations/Residual Correlations
+              B4            B5            B6            B7
+              ________      ________      ________      ________
+ B4             0.000
+ B5            -0.158         0.000
+ B6            -0.408         0.834         0.000
+ B7             0.408        -0.323        -0.308         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances/Correlations/Residual Corr
+              B4            B5            B6            B7
+              ________      ________      ________      ________
+ B4             0.000
+ B5           -53.594       999.000
+ B6           -99.694       210.829         0.441
+ B7           999.000      -104.285       -41.368         0.000
+
+
+           Normalized Residuals for Covariances/Correlations/Residual Correlations
+              B4            B5            B6            B7
+              ________      ________      ________      ________
+ B4             0.000
+ B5            -3.996        -0.001
+ B6           -10.678        19.585         0.004
+ B7            11.188        -9.049        -8.803         0.000
+
+
+MODEL MODIFICATION INDICES
+
+NOTE:  Modification indices for direct effects of observed dependent variables
+regressed on covariates may not be included.  To include these, request
+MODINDICES (ALL).
+
+Minimum M.I. value for printing the modification index    10.000
+
+                            M.I.     E.P.C.  Std E.P.C.  StdYX E.P.C.
+
+WITH Statements
+
+B5       WITH B4         1110.031    -0.808     -0.808       -0.364
+B6       WITH B4         2852.255    -1.138     -1.138       -0.432
+B6       WITH B5         7568.906     1.884      1.884        0.633
+B7       WITH B4         7571.699     1.815      1.815        0.889
+B7       WITH B5         2850.998    -1.104     -1.104       -0.478
+B7       WITH B6         1109.788    -0.634     -0.634       -0.232
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              B4            B5            B6            B7
+              ________      ________      ________      ________
+      1           1             2             3             4
+
+
+           LAMBDA
+              TRUST
+              ________
+ B4                 0
+ B5                 5
+ B6                 6
+ B7                 7
+
+
+           THETA
+              B4            B5            B6            B7
+              ________      ________      ________      ________
+ B4                 8
+ B5                 0             9
+ B6                 0             0            10
+ B7                 0             0             0            11
+
+
+           ALPHA
+              TRUST
+              ________
+      1           0
+
+
+           BETA
+              TRUST
+              ________
+ TRUST              0
+
+
+           PSI
+              TRUST
+              ________
+ TRUST             12
+
+
+     STARTING VALUES
+
+
+           NU
+              B4            B5            B6            B7
+              ________      ________      ________      ________
+      1         4.400         4.957         5.621         3.534
+
+
+           LAMBDA
+              TRUST
+              ________
+ B4             1.000
+ B5             0.946
+ B6             0.887
+ B7             0.843
+
+
+           THETA
+              B4            B5            B6            B7
+              ________      ________      ________      ________
+ B4             3.288
+ B5             0.000         3.577
+ B6             0.000         0.000         3.647
+ B7             0.000         0.000         0.000         2.820
+
+
+           ALPHA
+              TRUST
+              ________
+      1         0.000
+
+
+           BETA
+              TRUST
+              ________
+ TRUST          0.000
+
+
+           PSI
+              TRUST
+              ________
+ TRUST          0.050
+
+
+     Beginning Time:  15:17:39
+        Ending Time:  15:17:41
+       Elapsed Time:  00:00:02
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2012 Muthen & Muthen

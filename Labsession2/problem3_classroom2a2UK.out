@@ -1,0 +1,554 @@
+Mplus VERSION 7 (Mac)
+MUTHEN & MUTHEN
+08/18/2015   3:48 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: Exercise III from TUESDAY
+
+  Data: FILE is ESSround3-trust-day2-n.dat;
+  Format is 12f2;
+  listwise=on;
+
+  Variable: Names are cntry A8 A9 A10 B4 B5 B6 B7 B8 B9 B10 cntrynum;
+  usevariables are B4 B5 B6 A8 A9 A10;
+  useobservation are (cntrynum EQ 12);
+
+  missing ARE ALL (66 77 88 99);
+
+  !analysis: type = basic;
+
+
+  model: 	TRINS by B4 B5 B6;
+  		TRSOC by A8 A9 A10;
+
+  output: sampstat residual Stdyx Tech1 modindices;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+Exercise III from TUESDAY
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        2299
+
+Number of dependent variables                                    6
+Number of independent variables                                  0
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Continuous
+   B4          B5          B6          A8          A9          A10
+
+Continuous latent variables
+   TRINS       TRSOC
+
+
+Estimator                                                       ML
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+
+Input data file(s)
+  ESSround3-trust-day2-n.dat
+
+Input data format
+  (12F2)
+
+
+SAMPLE STATISTICS
+
+
+     SAMPLE STATISTICS
+
+
+           Means
+              B4            B5            B6            A8            A9
+              ________      ________      ________      ________      ________
+      1         4.157         5.001         6.025         5.427         5.790
+
+
+           Means
+              A10
+              ________
+      1         5.698
+
+
+           Covariances
+              B4            B5            B6            A8            A9
+              ________      ________      ________      ________      ________
+ B4             5.685
+ B5             3.025         5.773
+ B6             2.178         3.212         5.617
+ A8             1.147         1.237         1.158         4.676
+ A9             1.002         1.111         1.080         2.047         4.227
+ A10            0.954         1.043         1.107         1.831         1.918
+
+
+           Covariances
+              A10
+              ________
+ A10            4.036
+
+
+           Correlations
+              B4            B5            B6            A8            A9
+              ________      ________      ________      ________      ________
+ B4             1.000
+ B5             0.528         1.000
+ B6             0.385         0.564         1.000
+ A8             0.223         0.238         0.226         1.000
+ A9             0.204         0.225         0.222         0.460         1.000
+ A10            0.199         0.216         0.233         0.422         0.464
+
+
+           Correlations
+              A10
+              ________
+ A10            1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       19
+
+Loglikelihood
+
+          H0 Value                      -29004.122
+          H1 Value                      -28988.854
+
+Information Criteria
+
+          Akaike (AIC)                   58046.245
+          Bayesian (BIC)                 58155.309
+          Sample-Size Adjusted BIC       58094.943
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                             30.536
+          Degrees of Freedom                     8
+          P-Value                           0.0002
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.035
+          90 Percent C.I.                    0.022  0.049
+          Probability RMSEA <= .05           0.966
+
+CFI/TLI
+
+          CFI                                0.993
+          TLI                                0.987
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           3229.496
+          Degrees of Freedom                    15
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.018
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ TRINS    BY
+    B4                 1.000      0.000    999.000    999.000
+    B5                 1.367      0.056     24.565      0.000
+    B6                 1.068      0.045     23.754      0.000
+
+ TRSOC    BY
+    A8                 1.000      0.000    999.000    999.000
+    A9                 1.017      0.047     21.679      0.000
+    A10                0.925      0.043     21.273      0.000
+
+ TRSOC    WITH
+    TRINS              0.919      0.075     12.320      0.000
+
+ Intercepts
+    B4                 4.157      0.050     83.608      0.000
+    B5                 5.001      0.050     99.797      0.000
+    B6                 6.025      0.049    121.891      0.000
+    A8                 5.427      0.045    120.336      0.000
+    A9                 5.790      0.043    135.031      0.000
+    A10                5.698      0.042    135.998      0.000
+
+ Variances
+    TRINS              2.185      0.151     14.471      0.000
+    TRSOC              2.013      0.140     14.350      0.000
+
+ Residual Variances
+    B4                 3.500      0.126     27.671      0.000
+    B5                 1.692      0.141     12.013      0.000
+    B6                 3.125      0.124     25.290      0.000
+    A8                 2.664      0.114     23.369      0.000
+    A9                 2.145      0.104     20.567      0.000
+    A10                2.313      0.098     23.636      0.000
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ TRINS    BY
+    B4                 0.620      0.017     37.569      0.000
+    B5                 0.841      0.015     56.522      0.000
+    B6                 0.666      0.016     41.658      0.000
+
+ TRSOC    BY
+    A8                 0.656      0.018     36.545      0.000
+    A9                 0.702      0.018     40.030      0.000
+    A10                0.653      0.018     36.548      0.000
+
+ TRSOC    WITH
+    TRINS              0.438      0.025     17.715      0.000
+
+ Intercepts
+    B4                 1.744      0.033     52.665      0.000
+    B5                 2.081      0.037     56.087      0.000
+    B6                 2.542      0.043     59.256      0.000
+    A8                 2.510      0.042     59.075      0.000
+    A9                 2.816      0.046     60.597      0.000
+    A10                2.836      0.047     60.684      0.000
+
+ Variances
+    TRINS              1.000      0.000    999.000    999.000
+    TRSOC              1.000      0.000    999.000    999.000
+
+ Residual Variances
+    B4                 0.616      0.020     30.084      0.000
+    B5                 0.293      0.025     11.713      0.000
+    B6                 0.556      0.021     26.122      0.000
+    A8                 0.570      0.024     24.183      0.000
+    A9                 0.507      0.025     20.624      0.000
+    A10                0.573      0.023     24.522      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    B4                 0.384      0.020     18.785      0.000
+    B5                 0.707      0.025     28.261      0.000
+    B6                 0.444      0.021     20.829      0.000
+    A8                 0.430      0.024     18.272      0.000
+    A9                 0.493      0.025     20.015      0.000
+    A10                0.427      0.023     18.274      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.394E-02
+       (ratio of smallest to largest eigenvalue)
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means/Intercepts/Thresholds
+              B4            B5            B6            A8            A9
+              ________      ________      ________      ________      ________
+      1         4.157         5.001         6.025         5.427         5.790
+
+
+           Model Estimated Means/Intercepts/Thresholds
+              A10
+              ________
+      1         5.698
+
+
+           Residuals for Means/Intercepts/Thresholds
+              B4            B5            B6            A8            A9
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means/Intercepts/Thresholds
+              A10
+              ________
+      1         0.000
+
+
+           Standardized Residuals (z-scores) for Means/Intercepts/Thresholds
+              B4            B5            B6            A8            A9
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means/Intercepts/Thresholds
+              A10
+              ________
+      1         0.000
+
+
+           Normalized Residuals for Means/Intercepts/Thresholds
+              B4            B5            B6            A8            A9
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means/Intercepts/Thresholds
+              A10
+              ________
+      1         0.000
+
+
+           Model Estimated Covariances/Correlations/Residual Correlations
+              B4            B5            B6            A8            A9
+              ________      ________      ________      ________      ________
+ B4             5.685
+ B5             2.986         5.773
+ B6             2.334         3.189         5.617
+ A8             0.919         1.256         0.982         4.676
+ A9             0.935         1.278         0.998         2.047         4.227
+ A10            0.850         1.162         0.908         1.862         1.894
+
+
+           Model Estimated Covariances/Correlations/Residual Correlations
+              A10
+              ________
+ A10            4.036
+
+
+           Residuals for Covariances/Correlations/Residual Correlations
+              B4            B5            B6            A8            A9
+              ________      ________      ________      ________      ________
+ B4             0.000
+ B5             0.038         0.000
+ B6            -0.156         0.023         0.000
+ A8             0.228        -0.019         0.177         0.000
+ A9             0.067        -0.167         0.081         0.000         0.000
+ A10            0.103        -0.119         0.199        -0.031         0.024
+
+
+           Residuals for Covariances/Correlations/Residual Correlations
+              A10
+              ________
+ A10            0.000
+
+
+           Standardized Residuals (z-scores) for Covariances/Correlations/Residual Corr
+              B4            B5            B6            A8            A9
+              ________      ________      ________      ________      ________
+ B4             0.000
+ B5            19.005         0.000
+ B6            -4.281         4.888       999.000
+ A8             2.814        -0.312         2.330         0.043
+ A9             0.902        -3.063         1.176         0.020         0.028
+ A10            1.369        -2.032         2.783        -1.411         1.917
+
+
+           Standardized Residuals (z-scores) for Covariances/Correlations/Residual Corr
+              A10
+              ________
+ A10            0.000
+
+
+           Normalized Residuals for Covariances/Correlations/Residual Correlations
+              B4            B5            B6            A8            A9
+              ________      ________      ________      ________      ________
+ B4             0.000
+ B5             0.284         0.000
+ B6            -1.233         0.169         0.000
+ A8             2.070        -0.175         1.614         0.000
+ A9             0.641        -1.581         0.781         0.003         0.000
+ A10            1.012        -1.156         1.951        -0.315         0.255
+
+
+           Normalized Residuals for Covariances/Correlations/Residual Correlations
+              A10
+              ________
+ A10            0.000
+
+
+MODEL MODIFICATION INDICES
+
+NOTE:  Modification indices for direct effects of observed dependent variables
+regressed on covariates may not be included.  To include these, request
+MODINDICES (ALL).
+
+Minimum M.I. value for printing the modification index    10.000
+
+                            M.I.     E.P.C.  Std E.P.C.  StdYX E.P.C.
+
+BY Statements
+
+TRSOC    BY B5             23.801    -0.241     -0.341       -0.142
+TRSOC    BY B6             10.152     0.138      0.196        0.082
+
+WITH Statements
+
+B5       WITH B4           10.134     0.681      0.681        0.280
+B6       WITH B4           23.780    -0.727     -0.727       -0.220
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              B4            B5            B6            A8            A9
+              ________      ________      ________      ________      ________
+      1           1             2             3             4             5
+
+
+           NU
+              A10
+              ________
+      1           6
+
+
+           LAMBDA
+              TRINS         TRSOC
+              ________      ________
+ B4                 0             0
+ B5                 7             0
+ B6                 8             0
+ A8                 0             0
+ A9                 0             9
+ A10                0            10
+
+
+           THETA
+              B4            B5            B6            A8            A9
+              ________      ________      ________      ________      ________
+ B4                11
+ B5                 0            12
+ B6                 0             0            13
+ A8                 0             0             0            14
+ A9                 0             0             0             0            15
+ A10                0             0             0             0             0
+
+
+           THETA
+              A10
+              ________
+ A10               16
+
+
+           ALPHA
+              TRINS         TRSOC
+              ________      ________
+      1           0             0
+
+
+           BETA
+              TRINS         TRSOC
+              ________      ________
+ TRINS              0             0
+ TRSOC              0             0
+
+
+           PSI
+              TRINS         TRSOC
+              ________      ________
+ TRINS             17
+ TRSOC             18            19
+
+
+     STARTING VALUES
+
+
+           NU
+              B4            B5            B6            A8            A9
+              ________      ________      ________      ________      ________
+      1         4.157         5.001         6.025         5.427         5.790
+
+
+           NU
+              A10
+              ________
+      1         5.698
+
+
+           LAMBDA
+              TRINS         TRSOC
+              ________      ________
+ B4             1.000         0.000
+ B5             1.475         0.000
+ B6             1.062         0.000
+ A8             0.000         1.000
+ A9             0.000         1.048
+ A10            0.000         0.937
+
+
+           THETA
+              B4            B5            B6            A8            A9
+              ________      ________      ________      ________      ________
+ B4             2.844
+ B5             0.000         2.888
+ B6             0.000         0.000         2.810
+ A8             0.000         0.000         0.000         2.339
+ A9             0.000         0.000         0.000         0.000         2.115
+ A10            0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              A10
+              ________
+ A10            2.019
+
+
+           ALPHA
+              TRINS         TRSOC
+              ________      ________
+      1         0.000         0.000
+
+
+           BETA
+              TRINS         TRSOC
+              ________      ________
+ TRINS          0.000         0.000
+ TRSOC          0.000         0.000
+
+
+           PSI
+              TRINS         TRSOC
+              ________      ________
+ TRINS          0.050
+ TRSOC          0.000         0.050
+
+
+     Beginning Time:  15:48:49
+        Ending Time:  15:48:50
+       Elapsed Time:  00:00:01
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2012 Muthen & Muthen

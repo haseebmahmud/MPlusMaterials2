@@ -1,0 +1,557 @@
+Mplus VERSION 7 (Mac)
+MUTHEN & MUTHEN
+08/20/2015   4:02 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: Exercise I_2_c from Thursday
+
+  DATA:
+  	! enter the name of the data set
+  	FILE = ESS1-DE-D40-55.dat;
+  	Format is 2F2 1F9 12F1;
+  !	listwise = on;
+
+  VARIABLE:
+  	! enter the names of the variables in the data set
+  	NAMES = essround cntry idno D40-D44 D49-D55;
+  	Missing are D40-D44 D49-D55 (6-9);
+  	usevariables are D40 D41 D42 D43 D44 D49 D50 D51 D52 D53 D54;
+  	
+  MODEL:
+  	F1 BY D40@-1 D41 D42 D43 D44;
+  	F2 BY D49@-1 D50 D51 D52 D53 D54;
+
+  	M1 BY D40-D44@1 D49-D54@1;
+
+
+  F1 with F2;
+  F1 with M1@1.0;
+  F2 with M1@1.0;
+
+
+  output: sampstat residual Stdyx Tech1 modindices;
+
+
+
+*** WARNING
+  Data set contains cases with missing on all variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on all variables:  2
+   1 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+Exercise I_2_c from Thursday
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        2916
+
+Number of dependent variables                                   11
+Number of independent variables                                  0
+Number of continuous latent variables                            3
+
+Observed dependent variables
+
+  Continuous
+   D40         D41         D42         D43         D44         D49
+   D50         D51         D52         D53         D54
+
+Continuous latent variables
+   F1          F2          M1
+
+
+Estimator                                                       ML
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  ESS1-DE-D40-55.dat
+
+Input data format
+  (2F2 1F9 12F1)
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns            96
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              D40           D41           D42           D43           D44
+              ________      ________      ________      ________      ________
+ D40            0.995
+ D41            0.981         0.986
+ D42            0.994         0.986         1.000
+ D43            0.984         0.976         0.989         0.989
+ D44            0.966         0.958         0.969         0.961         0.969
+ D49            0.919         0.912         0.921         0.913         0.903
+ D50            0.968         0.960         0.972         0.963         0.945
+ D51            0.980         0.972         0.985         0.975         0.957
+ D52            0.906         0.899         0.908         0.901         0.891
+ D53            0.967         0.959         0.971         0.963         0.947
+ D54            0.978         0.971         0.983         0.974         0.957
+
+
+           Covariance Coverage
+              D49           D50           D51           D52           D53
+              ________      ________      ________      ________      ________
+ D49            0.921
+ D50            0.903         0.972
+ D51            0.914         0.964         0.985
+ D52            0.866         0.894         0.902         0.908
+ D53            0.901         0.954         0.961         0.892         0.971
+ D54            0.910         0.961         0.973         0.900         0.961
+
+
+           Covariance Coverage
+              D54
+              ________
+ D54            0.983
+
+
+SAMPLE STATISTICS
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              D40           D41           D42           D43           D44
+              ________      ________      ________      ________      ________
+      1         2.874         2.994         1.540         3.794         2.721
+
+
+           Means
+              D49           D50           D51           D52           D53
+              ________      ________      ________      ________      ________
+      1         2.389         2.612         3.632         2.489         3.231
+
+
+           Means
+              D54
+              ________
+      1         2.851
+
+
+           Covariances
+              D40           D41           D42           D43           D44
+              ________      ________      ________      ________      ________
+ D40            1.098
+ D41           -0.453         0.908
+ D42            0.120        -0.078         0.423
+ D43           -0.144         0.177        -0.194         1.168
+ D44            0.444        -0.335         0.076        -0.170         1.131
+ D49            0.332        -0.240         0.097        -0.162         0.488
+ D50           -0.243         0.220        -0.049         0.145        -0.300
+ D51           -0.311         0.274        -0.117         0.329        -0.448
+ D52            0.314        -0.233         0.096        -0.233         0.476
+ D53            0.373        -0.216         0.052        -0.150         0.464
+ D54           -0.246         0.199        -0.067         0.159        -0.356
+
+
+           Covariances
+              D49           D50           D51           D52           D53
+              ________      ________      ________      ________      ________
+ D49            0.919
+ D50           -0.224         1.167
+ D51           -0.397         0.370         0.981
+ D52            0.468        -0.271        -0.426         0.971
+ D53            0.363        -0.382        -0.444         0.424         1.311
+ D54           -0.286         0.240         0.356        -0.303        -0.234
+
+
+           Covariances
+              D54
+              ________
+ D54            0.990
+
+
+           Correlations
+              D40           D41           D42           D43           D44
+              ________      ________      ________      ________      ________
+ D40            1.000
+ D41           -0.454         1.000
+ D42            0.176        -0.125         1.000
+ D43           -0.127         0.172        -0.276         1.000
+ D44            0.399        -0.331         0.110        -0.148         1.000
+ D49            0.331        -0.263         0.156        -0.156         0.479
+ D50           -0.215         0.214        -0.070         0.125        -0.261
+ D51           -0.300         0.290        -0.181         0.307        -0.425
+ D52            0.304        -0.249         0.150        -0.219         0.454
+ D53            0.311        -0.198         0.069        -0.121         0.381
+ D54           -0.236         0.210        -0.103         0.148        -0.337
+
+
+           Correlations
+              D49           D50           D51           D52           D53
+              ________      ________      ________      ________      ________
+ D49            1.000
+ D50           -0.217         1.000
+ D51           -0.418         0.346         1.000
+ D52            0.496        -0.254        -0.436         1.000
+ D53            0.331        -0.309        -0.391         0.376         1.000
+ D54           -0.300         0.223         0.361        -0.308        -0.206
+
+
+           Correlations
+              D54
+              ________
+ D54            1.000
+
+
+     MAXIMUM LOG-LIKELIHOOD VALUE FOR THE UNRESTRICTED (H1) MODEL IS  -40426.873
+
+
+     NO CONVERGENCE.  SERIOUS PROBLEMS IN ITERATIONS.
+     ESTIMATED COVARIANCE MATRIX NON-INVERTIBLE.
+     CHECK YOUR STARTING VALUES.
+
+
+
+MODEL RESULTS
+
+                    Estimate
+
+ F1       BY
+    D40               -1.000
+    D41                1.000
+    D42                1.000
+    D43                1.000
+    D44                1.000
+
+ F2       BY
+    D49               -1.000
+    D50                1.000
+    D51                1.000
+    D52                1.000
+    D53                1.000
+    D54                1.000
+
+ M1       BY
+    D40                1.000
+    D41                1.000
+    D42                1.000
+    D43                1.000
+    D44                1.000
+    D49                1.000
+    D50                1.000
+    D51                1.000
+    D52                1.000
+    D53                1.000
+    D54                1.000
+
+ F1       WITH
+    F2                 0.000
+    M1                 1.000
+
+ F2       WITH
+    M1                 1.000
+
+ Intercepts
+    D40                2.874
+    D41                2.992
+    D42                1.540
+    D43                3.793
+    D44                2.719
+    D49                2.373
+    D50                2.613
+    D51                3.635
+    D52                2.481
+    D53                3.231
+    D54                2.850
+
+ Variances
+    F1                 0.050
+    F2                 0.050
+    M1                 0.050
+
+ Residual Variances
+    D40                0.549
+    D41                0.454
+    D42                0.212
+    D43                0.584
+    D44                0.567
+    D49                0.460
+    D50                0.584
+    D51                0.490
+    D52                0.487
+    D53                0.656
+    D54                0.496
+
+
+MODEL COMMAND WITH FINAL ESTIMATES USED AS STARTING VALUES
+
+     f1 BY d40@-1;
+     f1 BY d41*1;
+     f1 BY d42*1;
+     f1 BY d43*1;
+     f1 BY d44*1;
+     f2 BY d49@-1;
+     f2 BY d50*1;
+     f2 BY d51*1;
+     f2 BY d52*1;
+     f2 BY d53*1;
+     f2 BY d54*1;
+     m1 BY d40@1;
+     m1 BY d41@1;
+     m1 BY d42@1;
+     m1 BY d43@1;
+     m1 BY d44@1;
+     m1 BY d49@1;
+     m1 BY d50@1;
+     m1 BY d51@1;
+     m1 BY d52@1;
+     m1 BY d53@1;
+     m1 BY d54@1;
+
+     f1 WITH f2*0;
+     f1 WITH m1@1;
+     f2 WITH m1@1;
+
+     [ d40*2.87379 ];
+     [ d41*2.99165 ];
+     [ d42*1.53962 ];
+     [ d43*3.79327 ];
+     [ d44*2.71878 ];
+     [ d49*2.37342 ];
+     [ d50*2.61291 ];
+     [ d51*3.63475 ];
+     [ d52*2.48112 ];
+     [ d53*3.23101 ];
+     [ d54*2.84997 ];
+
+     d40*0.54912;
+     d41*0.45438;
+     d42*0.21177;
+     d43*0.58411;
+     d44*0.56749;
+     d49*0.46042;
+     d50*0.58355;
+     d51*0.49040;
+     d52*0.48679;
+     d53*0.65599;
+     d54*0.49555;
+     f1*0.05000;
+     f2*0.05000;
+     m1*0.05000;
+
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              D40           D41           D42           D43           D44
+              ________      ________      ________      ________      ________
+      1           1             2             3             4             5
+
+
+           NU
+              D49           D50           D51           D52           D53
+              ________      ________      ________      ________      ________
+      1           6             7             8             9            10
+
+
+           NU
+              D54
+              ________
+      1          11
+
+
+           LAMBDA
+              F1            F2            M1
+              ________      ________      ________
+ D40                0             0             0
+ D41               12             0             0
+ D42               13             0             0
+ D43               14             0             0
+ D44               15             0             0
+ D49                0             0             0
+ D50                0            16             0
+ D51                0            17             0
+ D52                0            18             0
+ D53                0            19             0
+ D54                0            20             0
+
+
+           THETA
+              D40           D41           D42           D43           D44
+              ________      ________      ________      ________      ________
+ D40               21
+ D41                0            22
+ D42                0             0            23
+ D43                0             0             0            24
+ D44                0             0             0             0            25
+ D49                0             0             0             0             0
+ D50                0             0             0             0             0
+ D51                0             0             0             0             0
+ D52                0             0             0             0             0
+ D53                0             0             0             0             0
+ D54                0             0             0             0             0
+
+
+           THETA
+              D49           D50           D51           D52           D53
+              ________      ________      ________      ________      ________
+ D49               26
+ D50                0            27
+ D51                0             0            28
+ D52                0             0             0            29
+ D53                0             0             0             0            30
+ D54                0             0             0             0             0
+
+
+           THETA
+              D54
+              ________
+ D54               31
+
+
+           ALPHA
+              F1            F2            M1
+              ________      ________      ________
+      1           0             0             0
+
+
+           BETA
+              F1            F2            M1
+              ________      ________      ________
+ F1                 0             0             0
+ F2                 0             0             0
+ M1                 0             0             0
+
+
+           PSI
+              F1            F2            M1
+              ________      ________      ________
+ F1                32
+ F2                33            34
+ M1                 0             0            35
+
+
+     STARTING VALUES
+
+
+           NU
+              D40           D41           D42           D43           D44
+              ________      ________      ________      ________      ________
+      1         2.874         2.992         1.540         3.793         2.719
+
+
+           NU
+              D49           D50           D51           D52           D53
+              ________      ________      ________      ________      ________
+      1         2.373         2.613         3.635         2.481         3.231
+
+
+           NU
+              D54
+              ________
+      1         2.850
+
+
+           LAMBDA
+              F1            F2            M1
+              ________      ________      ________
+ D40           -1.000         0.000         1.000
+ D41            1.000         0.000         1.000
+ D42            1.000         0.000         1.000
+ D43            1.000         0.000         1.000
+ D44            1.000         0.000         1.000
+ D49            0.000        -1.000         1.000
+ D50            0.000         1.000         1.000
+ D51            0.000         1.000         1.000
+ D52            0.000         1.000         1.000
+ D53            0.000         1.000         1.000
+ D54            0.000         1.000         1.000
+
+
+           THETA
+              D40           D41           D42           D43           D44
+              ________      ________      ________      ________      ________
+ D40            0.549
+ D41            0.000         0.454
+ D42            0.000         0.000         0.212
+ D43            0.000         0.000         0.000         0.584
+ D44            0.000         0.000         0.000         0.000         0.567
+ D49            0.000         0.000         0.000         0.000         0.000
+ D50            0.000         0.000         0.000         0.000         0.000
+ D51            0.000         0.000         0.000         0.000         0.000
+ D52            0.000         0.000         0.000         0.000         0.000
+ D53            0.000         0.000         0.000         0.000         0.000
+ D54            0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              D49           D50           D51           D52           D53
+              ________      ________      ________      ________      ________
+ D49            0.460
+ D50            0.000         0.584
+ D51            0.000         0.000         0.490
+ D52            0.000         0.000         0.000         0.487
+ D53            0.000         0.000         0.000         0.000         0.656
+ D54            0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              D54
+              ________
+ D54            0.496
+
+
+           ALPHA
+              F1            F2            M1
+              ________      ________      ________
+      1         0.000         0.000         0.000
+
+
+           BETA
+              F1            F2            M1
+              ________      ________      ________
+ F1             0.000         0.000         0.000
+ F2             0.000         0.000         0.000
+ M1             0.000         0.000         0.000
+
+
+           PSI
+              F1            F2            M1
+              ________      ________      ________
+ F1             0.050
+ F2             0.000         0.050
+ M1             1.000         1.000         0.050
+
+
+     Beginning Time:  16:02:31
+        Ending Time:  16:02:31
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2012 Muthen & Muthen

@@ -1,0 +1,19 @@
+TITLE: Exercise III from TUESDAY
+
+Data: FILE is ESSround3-trust-day2-n.dat;
+Format is 12f2;
+listwise=on;
+
+Variable: Names are cntry A8 A9 A10 B4 B5 B6 B7 B8 B9 B10 cntrynum;
+usevariables are B4 B5 B6 A8 A9 A10;
+useobservation are (cntrynum EQ 12);
+
+missing ARE ALL (66 77 88 99);
+
+!analysis: type = basic;
+
+
+model: 	TRINS by B4 B5 B6;
+		TRSOC by A8 A9 A10;
+
+output: sampstat residual Stdyx Tech1 modindices;

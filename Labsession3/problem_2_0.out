@@ -1,0 +1,755 @@
+Mplus VERSION 7 (Mac)
+MUTHEN & MUTHEN
+08/19/2015   3:19 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: Exercise II_0 from WednesDAY
+
+  Data: file = ESS1-MTMMsoc-poltrust-satisf-IT.dat;
+  Format is 2F2 1F9 10F2 6F1 3F2 6F1 3F2;
+  listwise=on;
+
+  Variable: Names are essround cntry idno ppltrst pplfair pplhlp
+  trstprl trstlgl trstplc stfeco stfgov stfdem spltadm test7 test8 test9
+  test10 test11 test12 test13 test14 test15 test25 test26 test27
+  test28 test29 test30 test31 test32 test33;
+
+  usevariables are stfeco stfgov stfdem test7 test8 test9 test25
+  test26 test27;
+
+  missing ARE essround cntry idno ppltrst pplfair pplhlp trstprl
+  trstlgl trstplc stfeco stfgov stfdem spltadm (66 - 99)
+  test7 test8 test9 test10 test11 test12 (6-9)
+  test13 test14 test15 (66 - 99)
+  test25 test26 test27 test28 test29 test30 (6-9)
+  test31 test32 test33 (66-99);
+
+  !analysis: type = basic;
+
+  model: 	
+  	 	F1 BY stfeco@1 test7@1 test25@1;
+  		F2 BY stfgov@1 test8@1 test26@1;
+  		F3 BY stfdem@1 test9@1 test27@1;
+
+
+  ! We want to free the variance because by default it is 1
+
+  		M1 BY stfeco* stfgov stfdem;
+  		M2 BY test7* test8 test9;
+  		M3 BY test25* test26 test27;
+
+  !var to free factors of 1
+  		F1@1.0;
+  		F2@1.0;
+  		F3@1.0;
+  ! free the variance of method factors
+
+  		M1*;
+  		M2*;
+  		M3*;
+  ! Fixing corr to zero.
+
+  		F1 WITH M1 @0;
+  		F1 WITH M2 @0;
+  		F1 WITH M3 @0;
+
+  		F2 WITH M1 @0;
+  		F2 WITH M2 @0;
+  		F2 WITH M3 @0;
+
+  		F3 WITH M1 @0;
+  		F3 WITH M2 @0;
+  		F3 WITH M3 @0;
+
+  output: sampstat residual Stdyx Tech1 modindices;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+Exercise II_0 from WednesDAY
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1020
+
+Number of dependent variables                                    9
+Number of independent variables                                  0
+Number of continuous latent variables                            6
+
+Observed dependent variables
+
+  Continuous
+   STFECO      STFGOV      STFDEM      TEST7       TEST8       TEST9
+   TEST25      TEST26      TEST27
+
+Continuous latent variables
+   F1          F2          F3          M1          M2          M3
+
+
+Estimator                                                       ML
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+
+Input data file(s)
+  ESS1-MTMMsoc-poltrust-satisf-IT.dat
+
+Input data format
+  (2F2 1F9 10F2 6F1 3F2 6F1 3F2)
+
+
+SAMPLE STATISTICS
+
+
+     SAMPLE STATISTICS
+
+
+           Means
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+      1         4.097         3.885         4.867         2.202         2.138
+
+
+           Means
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+      1         2.435         2.375         2.284         2.725
+
+
+           Covariances
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+ STFECO         3.882
+ STFGOV         2.858         5.256
+ STFDEM         1.999         2.975         4.972
+ TEST7          0.631         0.790         0.511         0.579
+ TEST8          0.689         1.133         0.686         0.401         0.617
+ TEST9          0.337         0.549         0.853         0.254         0.305
+ TEST25         1.211         1.396         0.968         0.442         0.488
+ TEST26         1.192         1.855         1.216         0.442         0.637
+ TEST27         0.769         1.139         1.740         0.276         0.367
+
+
+           Covariances
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+ TEST9          0.556
+ TEST25         0.280         1.491
+ TEST26         0.335         1.206         1.605
+ TEST27         0.533         0.802         0.958         1.521
+
+
+           Correlations
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+ STFECO         1.000
+ STFGOV         0.633         1.000
+ STFDEM         0.455         0.582         1.000
+ TEST7          0.421         0.453         0.301         1.000
+ TEST8          0.445         0.629         0.392         0.670         1.000
+ TEST9          0.230         0.321         0.513         0.448         0.520
+ TEST25         0.503         0.499         0.355         0.476         0.509
+ TEST26         0.477         0.639         0.431         0.458         0.640
+ TEST27         0.316         0.403         0.633         0.294         0.379
+
+
+           Correlations
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+ TEST9          1.000
+ TEST25         0.307         1.000
+ TEST26         0.355         0.779         1.000
+ TEST27         0.579         0.533         0.613         1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES COULD NOT BE
+     COMPUTED.  THE MODEL MAY NOT BE IDENTIFIED.  CHECK YOUR MODEL.
+     PROBLEM INVOLVING PARAMETER 34.
+
+     THE CONDITION NUMBER IS      -0.143D-06.
+
+
+
+MODEL RESULTS
+
+                    Estimate
+
+ F1       BY
+    STFECO             1.000
+    TEST7              1.000
+    TEST25             1.000
+
+ F2       BY
+    STFGOV             1.000
+    TEST8              1.000
+    TEST26             1.000
+
+ F3       BY
+    STFDEM             1.000
+    TEST9              1.000
+    TEST27             1.000
+
+ M1       BY
+    STFECO             1.277
+    STFGOV             1.529
+    STFDEM             1.311
+
+ M2       BY
+    TEST7              1.080
+    TEST8              1.052
+    TEST9              0.920
+
+ M3       BY
+    TEST25             1.049
+    TEST26             1.065
+    TEST27             0.941
+
+ F1       WITH
+    M1                 0.000
+    M2                 0.000
+    M3                 0.000
+
+ F2       WITH
+    M1                 0.000
+    M2                 0.000
+    M3                 0.000
+    F1                 0.912
+
+ F3       WITH
+    M1                 0.000
+    M2                 0.000
+    M3                 0.000
+    F1                 0.751
+    F2                 0.758
+
+ M2       WITH
+    M1                -0.068
+
+ M3       WITH
+    M1                 0.347
+    M2                -0.386
+
+ Intercepts
+    STFECO             4.097
+    STFGOV             3.885
+    STFDEM             4.867
+    TEST7              2.202
+    TEST8              2.138
+    TEST9              2.435
+    TEST25             2.375
+    TEST26             2.284
+    TEST27             2.725
+
+ Variances
+    F1                 1.000
+    F2                 1.000
+    F3                 1.000
+    M1                 1.093
+    M2                -0.439
+    M3                 0.252
+
+ Residual Variances
+    STFECO             1.844
+    STFGOV             1.170
+    STFDEM             2.031
+    TEST7              0.168
+    TEST8              0.063
+    TEST9              0.043
+    TEST25             0.351
+    TEST26             0.191
+    TEST27             0.494
+
+
+STANDARDIZED MODEL RESULTS
+
+                      StdYX
+                    Estimate
+
+ F1       BY
+    STFECO             0.465
+    TEST7              1.234
+    TEST25             0.784
+
+ F2       BY
+    STFGOV             0.460
+    TEST8              1.316
+    TEST26             0.823
+
+ F3       BY
+    STFDEM             0.451
+    TEST9              1.220
+    TEST27             0.763
+
+ M1       BY
+    STFECO             0.621
+    STFGOV             0.735
+    STFDEM             0.619
+
+ M2       BY
+    TEST7            999.000
+    TEST8            999.000
+    TEST9            999.000
+
+ M3       BY
+    TEST25             0.413
+    TEST26             0.440
+    TEST27             0.361
+
+ F1       WITH
+    M1                 0.000
+    M2               999.000
+    M3                 0.000
+
+ F2       WITH
+    M1                 0.000
+    M2               999.000
+    M3                 0.000
+    F1                 0.912
+
+ F3       WITH
+    M1                 0.000
+    M2               999.000
+    M3                 0.000
+    F1                 0.751
+    F2                 0.758
+
+ M2       WITH
+    M1               999.000
+
+ M3       WITH
+    M1                 0.661
+    M2               999.000
+
+ Intercepts
+    STFECO             1.905
+    STFGOV             1.787
+    STFDEM             2.196
+    TEST7              2.718
+    TEST8              2.815
+    TEST9              2.972
+    TEST25             1.862
+    TEST26             1.879
+    TEST27             2.079
+
+ Variances
+    F1                 1.000
+    F2                 1.000
+    F3                 1.000
+    M1                 1.000
+    M2               999.000
+    M3                 1.000
+
+ Residual Variances
+    STFECO             0.399
+    STFGOV             0.248
+    STFDEM             0.414
+    TEST7              0.256
+    TEST8              0.109
+    TEST9              0.064
+    TEST25             0.215
+    TEST26             0.130
+    TEST27             0.288
+
+
+MODEL COMMAND WITH FINAL ESTIMATES USED AS STARTING VALUES
+
+     f1 BY stfeco@1;
+     f1 BY test7@1;
+     f1 BY test25@1;
+     f2 BY stfgov@1;
+     f2 BY test8@1;
+     f2 BY test26@1;
+     f3 BY stfdem@1;
+     f3 BY test9@1;
+     f3 BY test27@1;
+     m1 BY stfeco*1.27728;
+     m1 BY stfgov*1.52920;
+     m1 BY stfdem*1.31077;
+     m2 BY test7*1.07979;
+     m2 BY test8*1.05163;
+     m2 BY test9*0.91955;
+     m3 BY test25*1.04857;
+     m3 BY test26*1.06523;
+     m3 BY test27*0.94059;
+
+     f1 WITH m1@0;
+     f1 WITH m2@0;
+     f1 WITH m3@0;
+     f2 WITH m1@0;
+     f2 WITH m2@0;
+     f2 WITH m3@0;
+     f2 WITH f1*0.91195;
+     f3 WITH m1@0;
+     f3 WITH m2@0;
+     f3 WITH m3@0;
+     f3 WITH f1*0.75078;
+     f3 WITH f2*0.75786;
+     m2 WITH m1*-0.06774;
+     m3 WITH m1*0.34719;
+     m3 WITH m2*-0.38603;
+
+     [ stfeco*4.09706 ];
+     [ stfgov*3.88529 ];
+     [ stfdem*4.86667 ];
+     [ test7*2.20196 ];
+     [ test8*2.13824 ];
+     [ test9*2.43529 ];
+     [ test25*2.37549 ];
+     [ test26*2.28431 ];
+     [ test27*2.72451 ];
+
+     stfeco*1.84425;
+     stfgov*1.17045;
+     stfdem*2.03096;
+     test7*0.16829;
+     test8*0.06273;
+     test9*0.04270;
+     test25*0.35055;
+     test26*0.19148;
+     test27*0.49359;
+     f1@1;
+     f2@1;
+     f3@1;
+     m1*1.09314;
+     m2*-0.43908;
+     m3*0.25223;
+
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means/Intercepts/Thresholds
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+      1         4.097         3.885         4.867         2.202         2.138
+
+
+           Model Estimated Means/Intercepts/Thresholds
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+      1         2.435         2.375         2.284         2.725
+
+
+           Residuals for Means/Intercepts/Thresholds
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means/Intercepts/Thresholds
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000
+
+
+           Model Estimated Covariances/Correlations/Residual Correlations
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+ STFECO         9.859
+ STFGOV         6.737         9.879
+ STFDEM         5.705         6.315         9.785
+ TEST7          7.242         6.078         5.072         7.242
+ TEST8          5.488         7.552         5.266         5.528         7.302
+ TEST9          4.658         5.351         6.877         4.626         5.025
+ TEST25         6.911         5.633         5.165         6.595         4.973
+ TEST26         5.212         7.169         5.416         5.108         6.743
+ TEST27         4.427         5.027         7.019         4.268         4.601
+
+
+           Model Estimated Covariances/Correlations/Residual Correlations
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+ TEST9          6.662
+ TEST25         4.620         7.124
+ TEST26         5.073         5.207         7.092
+ TEST27         6.672         4.837         5.223         7.724
+
+
+           Residuals for Covariances/Correlations/Residual Correlations
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+ STFECO        -5.977
+ STFGOV        -3.879        -4.623
+ STFDEM        -3.705        -3.340        -4.812
+ TEST7         -6.611        -5.288        -4.561        -6.663
+ TEST8         -4.799        -6.419        -4.580        -5.127        -6.685
+ TEST9         -4.321        -4.802        -6.024        -4.372        -4.721
+ TEST25        -5.700        -4.237        -4.197        -6.153        -4.484
+ TEST26        -4.020        -5.314        -4.199        -4.666        -6.106
+ TEST27        -3.658        -3.888        -5.280        -3.992        -4.233
+
+
+           Residuals for Covariances/Correlations/Residual Correlations
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+ TEST9         -6.106
+ TEST25        -4.340        -5.633
+ TEST26        -4.738        -4.001        -5.486
+ TEST27        -6.139        -4.035        -4.265        -6.203
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+      1           1             2             3             4             5
+
+
+           NU
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+      1           6             7             8             9
+
+
+           LAMBDA
+              F1            F2            F3            M1            M2
+              ________      ________      ________      ________      ________
+ STFECO             0             0             0            10             0
+ STFGOV             0             0             0            11             0
+ STFDEM             0             0             0            12             0
+ TEST7              0             0             0             0            13
+ TEST8              0             0             0             0            14
+ TEST9              0             0             0             0            15
+ TEST25             0             0             0             0             0
+ TEST26             0             0             0             0             0
+ TEST27             0             0             0             0             0
+
+
+           LAMBDA
+              M3
+              ________
+ STFECO             0
+ STFGOV             0
+ STFDEM             0
+ TEST7              0
+ TEST8              0
+ TEST9              0
+ TEST25            16
+ TEST26            17
+ TEST27            18
+
+
+           THETA
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+ STFECO            19
+ STFGOV             0            20
+ STFDEM             0             0            21
+ TEST7              0             0             0            22
+ TEST8              0             0             0             0            23
+ TEST9              0             0             0             0             0
+ TEST25             0             0             0             0             0
+ TEST26             0             0             0             0             0
+ TEST27             0             0             0             0             0
+
+
+           THETA
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+ TEST9             24
+ TEST25             0            25
+ TEST26             0             0            26
+ TEST27             0             0             0            27
+
+
+           ALPHA
+              F1            F2            F3            M1            M2
+              ________      ________      ________      ________      ________
+      1           0             0             0             0             0
+
+
+           ALPHA
+              M3
+              ________
+      1           0
+
+
+           BETA
+              F1            F2            F3            M1            M2
+              ________      ________      ________      ________      ________
+ F1                 0             0             0             0             0
+ F2                 0             0             0             0             0
+ F3                 0             0             0             0             0
+ M1                 0             0             0             0             0
+ M2                 0             0             0             0             0
+ M3                 0             0             0             0             0
+
+
+           BETA
+              M3
+              ________
+ F1                 0
+ F2                 0
+ F3                 0
+ M1                 0
+ M2                 0
+ M3                 0
+
+
+           PSI
+              F1            F2            F3            M1            M2
+              ________      ________      ________      ________      ________
+ F1                 0
+ F2                28             0
+ F3                29            30             0
+ M1                 0             0             0            31
+ M2                 0             0             0            32            33
+ M3                 0             0             0            34            35
+
+
+           PSI
+              M3
+              ________
+ M3                36
+
+
+     STARTING VALUES
+
+
+           NU
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+      1         4.097         3.885         4.867         2.202         2.138
+
+
+           NU
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+      1         2.435         2.375         2.284         2.725
+
+
+           LAMBDA
+              F1            F2            F3            M1            M2
+              ________      ________      ________      ________      ________
+ STFECO         1.000         0.000         0.000         1.000         0.000
+ STFGOV         0.000         1.000         0.000         1.000         0.000
+ STFDEM         0.000         0.000         1.000         1.000         0.000
+ TEST7          1.000         0.000         0.000         0.000         1.000
+ TEST8          0.000         1.000         0.000         0.000         1.000
+ TEST9          0.000         0.000         1.000         0.000         1.000
+ TEST25         1.000         0.000         0.000         0.000         0.000
+ TEST26         0.000         1.000         0.000         0.000         0.000
+ TEST27         0.000         0.000         1.000         0.000         0.000
+
+
+           LAMBDA
+              M3
+              ________
+ STFECO         0.000
+ STFGOV         0.000
+ STFDEM         0.000
+ TEST7          0.000
+ TEST8          0.000
+ TEST9          0.000
+ TEST25         1.000
+ TEST26         1.000
+ TEST27         1.000
+
+
+           THETA
+              STFECO        STFGOV        STFDEM        TEST7         TEST8
+              ________      ________      ________      ________      ________
+ STFECO         1.943
+ STFGOV         0.000         2.631
+ STFDEM         0.000         0.000         2.489
+ TEST7          0.000         0.000         0.000         0.290
+ TEST8          0.000         0.000         0.000         0.000         0.309
+ TEST9          0.000         0.000         0.000         0.000         0.000
+ TEST25         0.000         0.000         0.000         0.000         0.000
+ TEST26         0.000         0.000         0.000         0.000         0.000
+ TEST27         0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              TEST9         TEST25        TEST26        TEST27
+              ________      ________      ________      ________
+ TEST9          0.278
+ TEST25         0.000         0.746
+ TEST26         0.000         0.000         0.804
+ TEST27         0.000         0.000         0.000         0.761
+
+
+           ALPHA
+              F1            F2            F3            M1            M2
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           ALPHA
+              M3
+              ________
+      1         0.000
+
+
+           BETA
+              F1            F2            F3            M1            M2
+              ________      ________      ________      ________      ________
+ F1             0.000         0.000         0.000         0.000         0.000
+ F2             0.000         0.000         0.000         0.000         0.000
+ F3             0.000         0.000         0.000         0.000         0.000
+ M1             0.000         0.000         0.000         0.000         0.000
+ M2             0.000         0.000         0.000         0.000         0.000
+ M3             0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              M3
+              ________
+ F1             0.000
+ F2             0.000
+ F3             0.000
+ M1             0.000
+ M2             0.000
+ M3             0.000
+
+
+           PSI
+              F1            F2            F3            M1            M2
+              ________      ________      ________      ________      ________
+ F1             1.000
+ F2             0.000         1.000
+ F3             0.000         0.000         1.000
+ M1             0.000         0.000         0.000         0.050
+ M2             0.000         0.000         0.000         0.000         0.050
+ M3             0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              M3
+              ________
+ M3             0.050
+
+
+     Beginning Time:  15:19:51
+        Ending Time:  15:19:51
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2012 Muthen & Muthen
